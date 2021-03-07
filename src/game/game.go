@@ -1,4 +1,4 @@
-package crawler
+package game
 
 import (
 	"encoding/json"
@@ -43,6 +43,6 @@ func process(r *colly.Response) {
 
 	if response[0].Button.Copy != "Out of stock" {
 		beeep.Alert("Game", "", "")
-		log.Println("https://www.game.co.uk/" + response[0].Button.Link)
+		log.Println("Available at Game:", "https://www.game.co.uk/"+response[0].Button.Link)
 	}
 }

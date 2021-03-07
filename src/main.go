@@ -1,7 +1,9 @@
 package main
 
 import (
-	"src/src/crawler"
+	"fmt"
+	"src/src/argos"
+	"src/src/game"
 	"time"
 
 	"github.com/gocolly/colly"
@@ -14,8 +16,12 @@ func main() {
 		)
 
 		cGame := c.Clone()
-		crawler.Game(cGame)
+		cArgos := c.Clone()
 
+		game.Game(cGame)
+		argos.Argos(cArgos)
+
+		fmt.Println("")
 		time.Sleep(30 * time.Second)
 	}
 }
