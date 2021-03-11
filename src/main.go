@@ -2,7 +2,9 @@ package main
 
 import (
 	"fmt"
+	"src/src/amazon"
 	"src/src/argos"
+	"src/src/currys"
 	"src/src/game"
 	"src/src/very"
 	"time"
@@ -19,6 +21,8 @@ func main() {
 		game.Game(c.Clone())
 		argos.Argos(c.Clone())
 		very.Very(c.Clone())
+		currys.Currys(c.Clone())
+		amazon.Amazon(c.Clone())
 
 		fmt.Println("")
 		time.Sleep(30 * time.Second)
