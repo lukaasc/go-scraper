@@ -2,10 +2,12 @@ package argos
 
 import (
 	"log"
+	"src/src/helpers"
 
-	"github.com/gen2brain/beeep"
 	"github.com/gocolly/colly"
 )
+
+const url = "https://www.argos.co.uk/product/8349000"
 
 func Argos(c *colly.Collector) {
 	c.OnRequest(func(r *colly.Request) {
@@ -14,7 +16,7 @@ func Argos(c *colly.Collector) {
 
 	c.OnHTML("body", process)
 
-	c.Visit("https://www.argos.co.uk/product/8349000")
+	c.Visit(url)
 }
 
 func process(e *colly.HTMLElement) {
@@ -22,7 +24,6 @@ func process(e *colly.HTMLElement) {
 	text := "We're working hard to make this available as soon as possible."
 
 	if childText != text {
-		beeep.Alert("Argos", "", "")
-		log.Println("Available at Argos:", "https://www.argos.co.uk/product/8349000")
+		helpers.Notify("Argos", url)
 	}
 }

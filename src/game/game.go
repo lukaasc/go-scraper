@@ -6,7 +6,8 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/gen2brain/beeep"
+	"src/src/helpers"
+
 	"github.com/gocolly/colly"
 )
 
@@ -42,7 +43,8 @@ func process(r *colly.Response) {
 	json.Unmarshal([]byte(js), &response)
 
 	if response[0].Button.Copy != "Out of stock" {
-		beeep.Alert("Game", "", "")
-		log.Println("Available at Game:", "https://www.game.co.uk/"+response[0].Button.Link)
+		url := "https://www.game.co.uk/" + response[0].Button.Link
+
+		helpers.Notify("Game", url)
 	}
 }
